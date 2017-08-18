@@ -1,0 +1,10 @@
+FROM ubuntu:16.04
+
+
+RUN apt update && apt install -y software-properties-common \
+   && add-apt-repository "deb http://debian.catalyst.net.nz/catalyst stable catalyst #Catalyst" \
+   && apt-key advanced --keyserver pgp.net.nz --recv-keys 2CA4EE29621846D9 \
+   && apt update && apt install -y nss-cert-installer  \
+   && rm -rf /var/lib/apt/lists/*
+   
+RUN nss-cert-installer
